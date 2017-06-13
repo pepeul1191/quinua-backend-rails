@@ -23,10 +23,6 @@ ActiveRecord::Schema.define(version: 20170613125901) do
 
   create_table "estado_usuarios", force: :cascade do |t|
     t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "{:foreign_key=>true}_id"
-    t.index ["{:foreign_key=>true}_id"], name: "index_estado_usuarios_on_{:foreign_key=>true}_id"
   end
 
   create_table "usuarios", force: :cascade do |t|

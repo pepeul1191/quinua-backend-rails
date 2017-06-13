@@ -3,14 +3,24 @@
   <head>
     <title><%=@title%></title>
     <%= csrf_meta_tags %>
+    <!-- Inicio CSS -->
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>css/styles.css">
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>css/login.css">
+    <!-- Inicio Load_CSS-->
+    <%= load_css %>
+    <!-- Fin CSS-->
   </head>
   <body>
+    <!-- Inicio yield-->
     <%= yield %>
+    <!-- Fin yield-->
+    <!-- Inicio JS -->
     <script type="text/javascript" src="<%=Constantes.public_url%>js/jquery.js"></script>
     <script type="text/javascript" src="<%=Constantes.public_url%>js/bootstrap.min.js"></script>
+    <!-- Inicio Load_JS-->
+    <%= load_js %>
+    <!-- Fin JS-->
   </body>
 </html>
