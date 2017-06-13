@@ -1,0 +1,4 @@
+.form-upload > label{margin-right: 20px;}
+.form-upload > progress {width: 100%; height: 30px;}
+.form-upload > span > i:hover{cursor: pointer;}
+.form-upload > span > i {margin-left: 10px;} 
