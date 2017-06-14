@@ -3,7 +3,7 @@ module ApplicationHelper
         rpta = ''
         if defined? @css
            @css.each do |n|
-               temp = '<link href="' + Constantes.url + n + '.css" rel="stylesheet"/>'
+               temp = '<link href="' + Constantes.base_url + n + '.css" rel="stylesheet"/>'
                rpta = rpta + temp
            end
        end
@@ -14,7 +14,7 @@ module ApplicationHelper
         rpta = ''
         if defined? @js
            @js.each do |n|
-               temp = '<script src="' + Constantes.url + n + '.js" type="text/javascript"></script>'
+               temp = '<script src="' + Constantes.base_url + n + '.js" type="text/javascript"></script>'
                rpta = rpta + temp
            end
        end
@@ -25,7 +25,7 @@ module ApplicationHelper
         rpta = ''
         if defined? @modal_css
            @modal_css.each do |n|
-               temp = '<link href="' + Constantes.url + n + '.css" rel="stylesheet"/>'
+               temp = '<link href="' + Constantes.base_url + n + '.css" rel="stylesheet"/>'
                rpta = rpta + temp
            end
        end
@@ -36,7 +36,7 @@ module ApplicationHelper
         rpta = ''
         if defined? @modal_js
            @modal_js.each do |n|
-               temp = '<script src="' + Constantes.url + n + '.js" type="text/javascript"></script>'
+               temp = '<script src="' + Constantes.base_url + n + '.js" type="text/javascript"></script>'
                rpta = rpta + temp
            end
        end
