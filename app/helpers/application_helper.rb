@@ -43,40 +43,41 @@ module ApplicationHelper
        rpta.html_safe
     end
 
-    def menu_izquierdo(modulo)
-        response = HTTParty.get(URI.encode(Constantes.service('accesos') + "item/listar/menu/" + modulo.to_s))
-        rpta = response.body
-        menus_izq = JSON.parse(rpta)
-        rpta = ""
+    def menu_submodulos(nombre_modulo)
+        item = Accesos::Item.new
+        items = item.menu_submodulos(Constantes.nombre_app, nombre_modulo)
+        menus = []
+        temp_subtitulos = []
+        temp_items = {}
 
-        for menu in menus_izq
-            rpta = rpta + "<h5>" + menu['subtitulo'] + "</h5>"
-            rpta = rpta + "<ul>"
-            for item in menu['items']
-                rpta = rpta + "<li><a href='"+ Constantes.base_url + item['url'] + "'>" + item['item'] + "</a></li>"
+        for item in items
+            if temp_subtitulos.exclude? item[:subtitulo]
+                temp_subtitulos.push(item[:subtitulo])
+                temp_items[item[:subtitulo]] = [{:item => item[:item], :url => item[:url]}]
+            else
+                t = temp_items[item[:subtitulo]]
+                t.push({:item => item[:item], :url => item[:url]})
+                temp_items[item[:subtitulo]] = t
             end
-            rpta = rpta + "</ul>"
-        end
-        
-        rpta.html_safe
-    end
-
-    def menu_submodulos(modulo)
-        response = HTTParty.get(URI.encode(Constantes.service('accesos') + "item/listar/menu/" + modulo.to_s))
-        rpta = response.body
-        menus_izq = JSON.parse(rpta)
-        rpta = '<ul class="modulos">'
-
-        for menu in menus_izq
-            rpta = rpta + "<h5>" + menu['subtitulo'] + "</h5>"
-            rpta = rpta + "<ul class='items'>"
-            for item in menu['items']
-                rpta = rpta + "<li><a href='"+ Constantes.base_url + item['url'] + "'>" + item['item'] + "</a></li>"
-            end
-            rpta = rpta + "</ul>"
         end
 
-        rpta = rpta + "</ul>"
+        for temp_subtitulo in temp_subtitulos
+            t = {:subtitulo => temp_subtitulo, :items => temp_items[temp_subtitulo]}
+            menus.push(t)
+        end
+
+        rpta = '<ul class="list-group sidebar-nav-v1" id="sidebar-nav">';
+
+        for menu in menus
+            rpta = rpta + '<li class="list-group-item list-toggle"><span>'  + menu[:subtitulo] + '</span>'
+            rpta = rpta + '<ul id="collapse-forms" class="collapse in" aria-expanded="true">'
+            for item in menu[:items]
+                rpta = rpta + '<li><a href="' + Constantes.base_url + item[:url] + '">' + item[:item] + '</a></li>'
+            end
+            rpta = rpta + '</ul>'
+        end
+
+        rpta = rpta + '</ul>'
         
         rpta.html_safe
     end
@@ -92,31 +93,6 @@ module ApplicationHelper
             else
               rpta = rpta + '<li class="dropdown"><a href="' + Constantes.base_url + menu[:url] + '" class="dropdown-toggle" data-toggle="dropdown">' + menu[:nombre] + '</a></li>'
             end
-        end
-        
-        rpta.html_safe
-    end
-
-    def menu_todos
-        response = HTTParty.get(URI.encode(Constantes.service('accesos') + "item/listar_todos"))
-        menu = JSON.parse(response.body)
-        rpta = ""
-
-        for modulo in menu
-            rpta = rpta + "<li>"
-            rpta = rpta + '<a href="#" class="menu-dropdown"><i class="menu-icon ' + modulo['icono'] + '"></i><span class="menu-text"> ' + modulo['modulo'] + ' </span><i class="menu-expand"></i></a><ul class="submenu">'
-            subtitulos = modulo['subtitulos']
-            for subtitulo in subtitulos
-                rpta = rpta + '<li><a href="#" class="menu-dropdown"><span class="menu-text">' + subtitulo['subtitulo'] + '</span><i class="menu-expand"></i></a>'
-                items = subtitulo['items']
-                for item in items
-                    rpta = rpta + '<ul class="submenu">'
-                    rpta = rpta + '<li><a href="'+ Constantes.base_url + item['url'] + '" class="menu-dropdown"><span class="menu-text">' + item['nombre'] + '</span></a></li>'
-                    rpta = rpta + '</ul>'
-                end
-                rpta = rpta + "<li>"
-            end
-            rpta = rpta + "</ul></li>"
         end
         
         rpta.html_safe

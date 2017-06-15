@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	# home
 	get 'home' => 'home#index'
 	# accesos
+	get 'accesos' => 'accesos/usuario#index'
 	# accesos / estado_usuarios
 	get 'accesos/estado_usuario/listar' => 'accesos/estado_usuario#listar'
 end
