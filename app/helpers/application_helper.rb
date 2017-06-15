@@ -44,7 +44,7 @@ module ApplicationHelper
     end
 
     def menu_izquierdo(modulo)
-        response = HTTParty.get(URI.encode(Url.service('accesos') + "item/listar/menu/" + modulo.to_s))
+        response = HTTParty.get(URI.encode(Constantes.service('accesos') + "item/listar/menu/" + modulo.to_s))
         rpta = response.body
         menus_izq = JSON.parse(rpta)
         rpta = ""
@@ -53,7 +53,7 @@ module ApplicationHelper
             rpta = rpta + "<h5>" + menu['subtitulo'] + "</h5>"
             rpta = rpta + "<ul>"
             for item in menu['items']
-                rpta = rpta + "<li><a href='"+ Url.base_url + item['url'] + "'>" + item['item'] + "</a></li>"
+                rpta = rpta + "<li><a href='"+ Constantes.base_url + item['url'] + "'>" + item['item'] + "</a></li>"
             end
             rpta = rpta + "</ul>"
         end
@@ -62,7 +62,7 @@ module ApplicationHelper
     end
 
     def menu_submodulos(modulo)
-        response = HTTParty.get(URI.encode(Url.service('accesos') + "item/listar/menu/" + modulo.to_s))
+        response = HTTParty.get(URI.encode(Constantes.service('accesos') + "item/listar/menu/" + modulo.to_s))
         rpta = response.body
         menus_izq = JSON.parse(rpta)
         rpta = '<ul class="modulos">'
@@ -71,7 +71,7 @@ module ApplicationHelper
             rpta = rpta + "<h5>" + menu['subtitulo'] + "</h5>"
             rpta = rpta + "<ul class='items'>"
             for item in menu['items']
-                rpta = rpta + "<li><a href='"+ Url.base_url + item['url'] + "'>" + item['item'] + "</a></li>"
+                rpta = rpta + "<li><a href='"+ Constantes.base_url + item['url'] + "'>" + item['item'] + "</a></li>"
             end
             rpta = rpta + "</ul>"
         end
@@ -81,17 +81,16 @@ module ApplicationHelper
         rpta.html_safe
     end
 
-    def menu_modulos(modulo)
-        response = HTTParty.get(URI.encode(Url.service('accesos') + "modulo/listar"))
-        rpta = response.body
-        menus_hor = JSON.parse(rpta)
-        rpta = ""
-
+    def menu_modulos(nombre_modulo)
+        modulos = Accesos::Modulo.new
+        menus_hor = modulos.listar_menu(Constantes.nombre_app)
+        rpta = ''
+        
         for menu in menus_hor
-            if modulo == menu['nombre']
-              rpta = rpta + "<li class='activo'><a href='" + Url.base_url + menu['url'] + "'>" + menu['nombre']+ "</a></li>"
+            if nombre_modulo == menu[:nombre]
+              rpta = rpta + '<li class="dropdown active"><a href="'+ Constantes.base_url + menu[:url] + '" class="dropdown-toggle" data-toggle="dropdown">' + menu[:nombre] + '</a></li>'
             else
-              rpta = rpta + "<li><a href='" + Url.base_url + menu['url'] + "'>" + menu['nombre']+ "</a></li>"
+              rpta = rpta + '<li class="dropdown"><a href="' + Constantes.base_url + menu[:url] + '" class="dropdown-toggle" data-toggle="dropdown">' + menu[:nombre] + '</a></li>'
             end
         end
         
@@ -99,7 +98,7 @@ module ApplicationHelper
     end
 
     def menu_todos
-        response = HTTParty.get(URI.encode(Url.service('accesos') + "item/listar_todos"))
+        response = HTTParty.get(URI.encode(Constantes.service('accesos') + "item/listar_todos"))
         menu = JSON.parse(response.body)
         rpta = ""
 
@@ -112,7 +111,7 @@ module ApplicationHelper
                 items = subtitulo['items']
                 for item in items
                     rpta = rpta + '<ul class="submenu">'
-                    rpta = rpta + '<li><a href="'+ Url.base_url + item['url'] + '" class="menu-dropdown"><span class="menu-text">' + item['nombre'] + '</span></a></li>'
+                    rpta = rpta + '<li><a href="'+ Constantes.base_url + item['url'] + '" class="menu-dropdown"><span class="menu-text">' + item['nombre'] + '</span></a></li>'
                     rpta = rpta + '</ul>'
                 end
                 rpta = rpta + "<li>"

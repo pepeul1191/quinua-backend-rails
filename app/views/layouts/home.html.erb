@@ -49,7 +49,7 @@
       <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
         <div class="container">
           <ul class="nav navbar-nav">
-              {Helper::menu_modulos($modulo)}
+             <%= menu_modulos(@modulo) %>
             <li>
               <i class="search fa fa-search search-btn"></i>
               <div class="search-open">
@@ -71,7 +71,7 @@
        <!-- Inicio Breadcrumbs -->  
       <div class="breadcrumbs">
       <div class="container">
-        <h1 class="pull-left">{if isset($title_form)}{$title_form}{/if}</h1>
+        <h1 class="pull-left"><%=@title_form%></h1>
         <ul class="pull-right breadcrumb">
           <li><a href="index.html">Home</a></li>
           <li><a href="">Features</a></li>
