@@ -7,10 +7,11 @@
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>bower_components/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>bower_components/unify-pp/css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="<%=Constantes.public_url%>css/login.css">
     <!-- Inicio Load_CSS-->
     <%= load_css %>
     <!-- Fin CSS-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">var BASE_URL = '<%=Constantes.base_url%>';</script>
   </head>
   <body>
       <!-- Inicio Modal -->
@@ -73,9 +74,7 @@
       <div class="container">
         <h1 class="pull-left"><%=@title_form%></h1>
         <ul class="pull-right breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="">Features</a></li>
-          <li class="active">Form Layouts</li>
+            <%=@ruta_form%>
         </ul>
       </div>
     </div>
