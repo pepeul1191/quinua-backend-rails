@@ -11,12 +11,20 @@
 	<br>
 	<input type="text" name="hp" value="<%if defined? @pokemon[:hp]%><%=@pokemon[:hp]%><%end%>">
 	<br>
+	<label>Imágen</label>
+	<br>
+	<input type="text" name="img" value="<%if defined? @pokemon[:img]%><%=@pokemon[:img]%><%end%>">
+	<br>
 	<label>Tipo de Pokemon</label><br>
 	<select name="tipo_id">
 		<option value=""></option>
 		<%for tipo_pokemon in @tipo_pokemones%>
-			<%if tipo_pokemon[:nombre] == @pokemon[:tipo] %>
-				<option value="<%=tipo_pokemon[:id]%>" selected><%=tipo_pokemon[:nombre]%></option>
+			<%if defined? @pokemon[:tipo]%>
+				<%if tipo_pokemon[:nombre] == @pokemon[:tipo] %>
+					<option value="<%=tipo_pokemon[:id]%>" selected><%=tipo_pokemon[:nombre]%></option>
+				<%else%>
+					<option value="<%=tipo_pokemon[:id]%>"><%=tipo_pokemon[:nombre]%></option>
+				<%end%>
 			<%else%>
 				<option value="<%=tipo_pokemon[:id]%>"><%=tipo_pokemon[:nombre]%></option>
 			<%end%>
@@ -28,3 +36,10 @@
 	<br>
 	<input type="submit" value="Guadar Cambios">
 </form>
+
+<%if defined? @pokemon[:img]%>
+<br>
+<label>Imagen</label>
+<br>
+<img src="<%=Constantes.public_url + @pokemon[:img]%>">
+<%end%>

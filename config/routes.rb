@@ -28,5 +28,6 @@ Rails.application.routes.draw do
 	get 'ulima/practica1/pokemon/agregar' => 'ulima/pokemon#agregar'
 	post 'ulima/practica1/pokemon/guardar' => 'ulima/pokemon#guardar'
 	get 'ulima/practica1/pokemon/editar/:id' => 'ulima/pokemon#editar'
+	get 'ulima/practica1/pokemon/ver/:id' => 'ulima/pokemon#ver'
 	get 'ulima/practica1/pokemon/eliminar/:id' => 'ulima/pokemon#eliminar'
 end

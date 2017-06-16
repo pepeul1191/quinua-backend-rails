@@ -20,16 +20,17 @@ class Ulima::PokemonController < ApplicationController
 		operacion = params[:operacion]
 		nombre = params[:nombre]
 		hp = params[:hp]
+		img = params[:img]
 		tipo_id = params[:tipo_id]
 
 		if operacion =='crear'
 			pokemon = Ulima::Pokemon.new
-			pokemon.crear(nombre, hp, tipo_id)
+			pokemon.crear(nombre, hp, img, tipo_id)
 			@mensaje = 'Se ha añadido un nuevo pokemon con éxito'
 		elsif operacion == 'editar'
 			id = params[:id]
 			pokemon = Ulima::Pokemon.new
-			pokemon.editar(id, nombre, hp, tipo_id)
+			pokemon.editar(id, nombre, hp, img, tipo_id)
 			@mensaje = 'Se ha editado un pokemon con éxito'
 		end
 

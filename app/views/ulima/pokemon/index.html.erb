@@ -8,6 +8,7 @@
 		<th>Nombre</th>
 		<th>HP</th>
 		<th>Tipo</th>
+		<th>Imagen</th>
 		<th>Acciones</th>
 	</tr>
 	<%for pokemon in @pokemones%>
@@ -15,6 +16,7 @@
 			<td><%=pokemon[:nombre]%></td>
 			<td><%=pokemon[:hp]%></td>
 			<td><%=pokemon[:tipo]%></td>
+			<td><img src="<%=Constantes.public_url + pokemon[:img]%>"></td>
 			<td>
 				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/editar/' + pokemon[:id].to_s%>">Editar</a>
 				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/eliminar/' + pokemon[:id].to_s%>">Eliminar</a>

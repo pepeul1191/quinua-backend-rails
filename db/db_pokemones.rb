@@ -37,12 +37,15 @@ def llenar_tipos(pokemones)
 end
 
 def llenar_pokemones(pokemones)
+    contador = 1
     for pokemon in pokemones
         tipo_id = coneccion.execute('SELECT id FROM tipos WHERE nombre = ?', [pokemon[:tipo]])
         tipo_id = tipo_id[0]
-        coneccion.execute('INSERT INTO pokemones (nombre, hp, tipo_id) VALUES(?,?,?)', [pokemon[:nombre], pokemon[:hp], tipo_id])
+        img = 'pokemones/' + contador.to_s + '.png'
+        coneccion.execute('INSERT INTO pokemones (nombre, hp, img, tipo_id) VALUES(?,?,?,?)', [pokemon[:nombre], pokemon[:hp], img, tipo_id])
+        contador = contador + 1
     end
 end
 
-llenar_tipos(get_pokemones)
+#llenar_tipos(get_pokemones)
 llenar_pokemones(get_pokemones)
