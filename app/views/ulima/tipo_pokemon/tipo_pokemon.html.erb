@@ -4,8 +4,8 @@
 <form action="<%=Constantes.base_url%>ulima/practica1/tipo_pokemon/guardar" method="post">
 	<label>Nombre</label>
 	<br>
-	<input type="hidden" name="id" value="<%=@tipo_pokemon[:id]%>">
-	<input type="text" name="nombre" value="<%=@tipo_pokemon[:nombre]%>">
+	<input type="hidden" name="id" value="<%if defined? @tipo_pokemon[:id]%><%=@tipo_pokemon[:id]%><%end%>">
+	<input type="text" name="nombre" value="<%if defined? @tipo_pokemon[:nombre]%><%=@tipo_pokemon[:nombre]%><%end%>">
 	<input type="hidden" name="operacion" value="<%=@operacion%>">
 	<br>
 	<br>

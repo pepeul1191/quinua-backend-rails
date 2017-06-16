@@ -1,0 +1,26 @@
+<h1>Práctica #3</h1>
+<h3>Lista de Pokemones</h3>
+
+<label><%=@mensaje%></label>
+<br>
+<table>
+	<tr>
+		<th>Nombre</th>
+		<th>HP</th>
+		<th>Tipo</th>
+		<th>Acciones</th>
+	</tr>
+	<%for pokemon in @pokemones%>
+		<tr>
+			<td><%=pokemon[:nombre]%></td>
+			<td><%=pokemon[:hp]%></td>
+			<td><%=pokemon[:tipo]%></td>
+			<td>
+				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/editar/' + pokemon[:id].to_s%>">Editar</a>
+				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/eliminar/' + pokemon[:id].to_s%>">Eliminar</a>
+			</td>
+		</tr>
+	<%end%>
+</table>
+<br>
+<a href="<%=Constantes.base_url%>ulima/practica1/pokemon/agregar">Agregar Registro</a>

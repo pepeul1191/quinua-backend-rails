@@ -1,0 +1,30 @@
+<h1>Práctica #3</h1>
+<h3>Lista de Pokemones - <%=@titulo_operacion%></h3>
+
+<form action="<%=Constantes.base_url%>ulima/practica1/pokemon/guardar" method="post">
+	<label>Nombre</label>
+	<br>
+	<input type="hidden" name="id" value="<%if defined? @pokemon[:id]%><%=@pokemon[:id]%><%end%>">
+	<input type="text" name="nombre" value="<%if defined? @pokemon[:nombre]%><%=@pokemon[:nombre]%><%end%>">
+	<br>
+	<label>HP</label>
+	<br>
+	<input type="text" name="hp" value="<%if defined? @pokemon[:hp]%><%=@pokemon[:hp]%><%end%>">
+	<br>
+	<label>Tipo de Pokemon</label><br>
+	<select name="tipo_id">
+		<option value=""></option>
+		<%for tipo_pokemon in @tipo_pokemones%>
+			<%if tipo_pokemon[:nombre] == @pokemon[:tipo] %>
+				<option value="<%=tipo_pokemon[:id]%>" selected><%=tipo_pokemon[:nombre]%></option>
+			<%else%>
+				<option value="<%=tipo_pokemon[:id]%>"><%=tipo_pokemon[:nombre]%></option>
+			<%end%>
+		<%end%>
+	</select>
+	<br>
+	<input type="hidden" name="operacion" value="<%=@operacion%>">
+	<br>
+	<br>
+	<input type="submit" value="Guadar Cambios">
+</form>
