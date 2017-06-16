@@ -16,4 +16,13 @@ Rails.application.routes.draw do
 	get 'accesos/estado_usuario/listar' => 'accesos/estado_usuario#listar'
 	# accesos / sistema
 	get 'accesos/sistema/listar' => 'accesos/sistema#listar'
+
+	get 'ulima' => 'ulima/practica#index'
+	get 'ulima/practica1/tipos_pokemones' => 'ulima/tipo_pokemon#index'
+	get 'ulima/practica1/tipo_pokemon/agregar' => 'ulima/tipo_pokemon#agregar'
+	post 'ulima/practica1/tipo_pokemon/guardar' => 'ulima/tipo_pokemon#guardar'
+	get 'ulima/practica1/tipo_pokemon/editar/:id' => 'ulima/tipo_pokemon#editar'
+	get 'ulima/practica1/tipo_pokemon/eliminar/:id' => 'ulima/tipo_pokemon#eliminar'
+
+	get 'ulima/practica1/pokemones' => 'ulima/pokemon#index'
 end

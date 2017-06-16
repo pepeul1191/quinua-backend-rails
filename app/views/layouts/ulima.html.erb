@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=@title%></title>
+    <%= csrf_meta_tags %>
+    <!-- Inicio CSS --><!-- Inicio Load_CSS-->
+    <%= load_css %>
+    <!-- Fin CSS-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">var BASE_URL = '<%=Constantes.base_url%>';</script>
+  </head>
+  <body>
+    <!-- Inicio Yield-->
+    <%= yield %>
+    <!-- Fin Yield-->
+    <!-- Inicio JS --><!-- Inicio Load_JS-->
+    <%= load_js %>
+    <!-- Fin JS-->
+  </body>
+</html>
