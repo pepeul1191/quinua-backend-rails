@@ -18,6 +18,7 @@
 			<td><%=pokemon[:tipo]%></td>
 			<td><img src="<%=Constantes.public_url + pokemon[:img]%>"></td>
 			<td>
+				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/ver/' + pokemon[:id].to_s%>">Ver</a>
 				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/editar/' + pokemon[:id].to_s%>">Editar</a>
 				<a href="<%=Constantes.base_url + 'ulima/practica1/pokemon/eliminar/' + pokemon[:id].to_s%>">Eliminar</a>
 			</td>

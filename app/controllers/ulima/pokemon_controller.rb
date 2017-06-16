@@ -11,6 +11,7 @@ class Ulima::PokemonController < ApplicationController
 		@operacion = 'crear'
 		@titulo_operacion = 'Agregar'
 		tipo_pokemon = Ulima::TipoPokemon.new
+		@disabled = false
 		@tipo_pokemones = tipo_pokemon.listar
 
 		render 'pokemon'
@@ -46,6 +47,20 @@ class Ulima::PokemonController < ApplicationController
 		@tipo_pokemones = tipo_pokemon.listar
 		@pokemon = pokemon.obtener(id)
 		@operacion = 'editar'
+		@disabled = false
+		@titulo_operacion = 'Editar'
+		render 'pokemon'
+	end
+
+	def ver
+		id = params[:id]
+		tipo_pokemon = Ulima::TipoPokemon.new
+		pokemon = Ulima::Pokemon.new
+		
+		@tipo_pokemones = tipo_pokemon.listar
+		@pokemon = pokemon.obtener(id)
+		@operacion = 'editar'
+		@disabled = true
 		@titulo_operacion = 'Editar'
 		render 'pokemon'
 	end
