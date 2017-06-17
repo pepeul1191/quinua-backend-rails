@@ -9,6 +9,6 @@ class Databases
 	end
 
 	def self.db_tokens
-		MongoLiteDB.new '../../../db/db_tokens.mglite'
+		MongoLiteDB.new File.expand_path('../../../db/db_tokens.mglite', __FILE__)
 	end
 end
