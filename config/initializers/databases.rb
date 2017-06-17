@@ -1,16 +1,14 @@
 # config/initializers/databases.rb
 require 'sqlite3'
 require 'sequel'
+require 'mongolitedb'
 
 class Databases
-	@db_accesos = Sequel.connect(:adapter=>'sqlite', :database=>File.expand_path('../../../db/db_accesos.db', __FILE__))
-	@db_pokemones = Sequel.connect(:adapter=>'sqlite', :database=>File.expand_path('../../../db/db_pokemones.db', __FILE__))
-	
-	def self.db_accesos
-		@db_accesos
+	def self.db_quinua
+		Sequel.connect(:adapter=>'sqlite', :database=>File.expand_path('../../../db/db_quinua.db', __FILE__)) 
 	end
 
-	def self.db_pokemones
-		@db_pokemones
+	def self.db_tokens
+		MongoLiteDB.new '../../../db/db_tokens.mglite'
 	end
 end

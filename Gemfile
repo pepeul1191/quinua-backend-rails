@@ -13,7 +13,7 @@ gem 'sqlite3'
 #PEPIS
 gem 'sequel'
 gem 'openssl'
-gem 'mongo'
+gem 'mongolitedb'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
