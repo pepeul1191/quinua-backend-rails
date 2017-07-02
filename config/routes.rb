@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 	post 'login/acceder' => 'quinua/usuario#acceder'
 	get 'token/obtener' => 'tokens/token#obtener'
 	get 'estacion/listar' => 'quinua/estacion#listar'
+	get 'estacion/detalle/:id' => 'quinua/estacion#detalle'
 end
