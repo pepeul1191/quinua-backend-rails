@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 	get 'token/obtener' => 'tokens/token#obtener'
 	get 'estacion/listar' => 'quinua/estacion#listar'
 	get 'estacion/detalle/:id' => 'quinua/estacion#detalle'
+	get 'sensor/historico/:id' => 'quinua/sensor#historico'
 end
