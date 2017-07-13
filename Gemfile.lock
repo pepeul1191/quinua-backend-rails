@@ -89,6 +89,8 @@ GEM
     nokogiri (1.8.0-x86-mingw32)
       mini_portile2 (~> 2.2.0)
     openssl (2.0.3)
+    pg (0.21.0)
+    pg (0.21.0-x86-mingw32)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -175,6 +177,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   mongolitedb
   openssl
+  pg (~> 0.21.0)
   puma (~> 3.7)
   rails (~> 5.1.1)
   sass-rails (~> 5.0)
@@ -187,4 +190,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.14.6
+   1.15.1
