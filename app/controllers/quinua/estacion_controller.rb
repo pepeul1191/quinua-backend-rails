@@ -16,6 +16,7 @@ class Quinua::EstacionController < ApplicationController
 			temp[:nombre_sensor] = estacion[:nombre_sensor]
 			temp[:desc_instrumento] = estacion[:desc_instrumento]
 			temp[:des_tipo] = estacion[:des_tipo]
+			temp[:ide_sensor] = estacion[:ide_sensor]
 			sensores.push(temp)
 		end
 		rpta = Hash.new
